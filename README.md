@@ -20,6 +20,7 @@ rust-wasm-game/
 ├── README.md         # This readme
 └── run.sh            # Build + serve helper script
 </pre>
+
 ## ⚙️ How to Run:
 🛠️ Setup & Run
 
@@ -45,7 +46,7 @@ Use run.sh bash script to build and run the wasm. The html is served via serve, 
     ./run.sh
 ```
 
-### Loicenses
+### Loicense
 
 MIT License
 
