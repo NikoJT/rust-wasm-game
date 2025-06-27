@@ -1,6 +1,26 @@
 import init, { move_down, move_right, move_up, move_left, get_sprite_position } from "./pkg/wasm_game.js";
 
 async function main() {
+  const audio = document.getElementById('bg-music');
+
+  // Just in case it's not ready yet
+  await new Promise(resolve => {
+    if (audio.readyState >= 3) return resolve();
+    audio.addEventListener('canplaythrough', resolve, { once: true });
+  });
+
+  // Only after user interacts, play
+  // fuck how i hate javascript with my whole heart.
+  window.addEventListener('keydown', () => {
+    if (audio && audio.paused) {
+      audio.play().then(() => {
+        console.log("🎵 Music started!");
+      }).catch(err => {
+        console.warn("Playback failed:", err);
+      });
+    }
+  }, { once: true });
+  
   console.log("Starting init...");
   await init();
   console.log("WASM initialized!");
